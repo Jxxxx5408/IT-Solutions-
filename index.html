@@ -2,410 +2,532 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>IT Solutions by Jp</title>
-<meta name="description" content="Describe your computer, phone, printer or Wi-Fi problem and Jp will get back to you.">
+<meta name="description" content="Describe your computer, phone, printer or Wi-Fi problem. Quick online help is free; bigger jobs are assessed and quoted.">
+<meta name="theme-color" content="#FBF8FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121318" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IT Solutions">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%234355B9'/%3E%3Cpath d='M24 22l-10 10 10 10M40 22l10 10-10 10M35 16l-6 32' stroke='white' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block" rel="stylesheet">
 <style>
+  /* ---------- Material 3 colour tokens (seed: indigo) ---------- */
   :root {
-    --bg: #070B18;
-    --bg-2: #0D1428;
-    --glass: rgba(255,255,255,0.045);
-    --glass-strong: rgba(255,255,255,0.075);
-    --stroke: rgba(255,255,255,0.10);
-    --stroke-strong: rgba(255,255,255,0.18);
-    --text: #EEF1FA;
-    --muted: #94A0BD;
-    --blue: #4F8CFF;
-    --cyan: #3EE0D0;
-    --violet: #8B6CFF;
-    --danger: #FF6B7A;
-    --ok: #3EE08F;
+    --primary: #4355B9; --on-primary: #FFFFFF;
+    --primary-container: #DEE0FF; --on-primary-container: #00105C;
+    --secondary-container: #E0E1F9; --on-secondary-container: #181A2C;
+    --tertiary: #77536D; --tertiary-container: #FFD7F1; --on-tertiary-container: #2D1228;
+    --success-container: #C8F2D0; --on-success-container: #00210D;
+    --surface: #FBF8FF; --surface-c-low: #F5F2FA; --surface-c: #EFEDF4; --surface-c-high: #E9E7EF; --surface-c-highest: #E4E1E9;
+    --on-surface: #1B1B21; --on-surface-variant: #46464F;
+    --outline: #767680; --outline-variant: #C6C5D0;
+    --error: #BA1A1A; --on-error: #FFFFFF; --error-container: #FFDAD6; --on-error-container: #410002;
+    --inverse-surface: #303036; --inverse-on-surface: #F2EFF7;
+    --scrim: rgba(0,0,0,.32);
   }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --bg: #F4F6FC; --bg-2: #E9EDF8; --glass: rgba(255,255,255,0.7); --glass-strong: #FFFFFF;
-      --stroke: rgba(20,30,60,0.10); --stroke-strong: rgba(20,30,60,0.20);
-      --text: #0E1530; --muted: #56607A; --blue: #2F6BEA; --cyan: #0EA597; --violet: #6A4CE0; --danger: #D93848; --ok: #12925A;
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --primary: #BAC3FF; --on-primary: #08218A;
+      --primary-container: #293CA0; --on-primary-container: #DEE0FF;
+      --secondary-container: #43465A; --on-secondary-container: #E0E1F9;
+      --tertiary: #E6BAD7; --tertiary-container: #5D3C55; --on-tertiary-container: #FFD7F1;
+      --success-container: #0F5228; --on-success-container: #C8F2D0;
+      --surface: #121318; --surface-c-low: #1B1B21; --surface-c: #1F1F25; --surface-c-high: #29292F; --surface-c-highest: #34343A;
+      --on-surface: #E4E1E9; --on-surface-variant: #C6C5D0;
+      --outline: #90909A; --outline-variant: #46464F;
+      --error: #FFB4AB; --on-error: #690005; --error-container: #93000A; --on-error-container: #FFDAD6;
+      --inverse-surface: #E4E1E9; --inverse-on-surface: #303036;
     }
   }
-  :root[data-theme="light"] {
-    --bg: #F4F6FC; --bg-2: #E9EDF8; --glass: rgba(255,255,255,0.7); --glass-strong: #FFFFFF;
-    --stroke: rgba(20,30,60,0.10); --stroke-strong: rgba(20,30,60,0.20);
-    --text: #0E1530; --muted: #56607A; --blue: #2F6BEA; --cyan: #0EA597; --violet: #6A4CE0; --danger: #D93848; --ok: #12925A;
+  :root[data-theme="dark"] {
+    --primary: #BAC3FF; --on-primary: #08218A; --primary-container: #293CA0; --on-primary-container: #DEE0FF;
+    --secondary-container: #43465A; --on-secondary-container: #E0E1F9;
+    --tertiary: #E6BAD7; --tertiary-container: #5D3C55; --on-tertiary-container: #FFD7F1;
+    --success-container: #0F5228; --on-success-container: #C8F2D0;
+    --surface: #121318; --surface-c-low: #1B1B21; --surface-c: #1F1F25; --surface-c-high: #29292F; --surface-c-highest: #34343A;
+    --on-surface: #E4E1E9; --on-surface-variant: #C6C5D0; --outline: #90909A; --outline-variant: #46464F;
+    --error: #FFB4AB; --on-error: #690005; --error-container: #93000A; --on-error-container: #FFDAD6;
+    --inverse-surface: #E4E1E9; --inverse-on-surface: #303036;
   }
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; }
+  /* ---------- Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
-    background: var(--bg); color: var(--text);
-    font-family: "Geist", system-ui, -apple-system, sans-serif; font-size: 16px; line-height: 1.55;
-    min-height: 100vh; overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    margin: 0; background: var(--surface); color: var(--on-surface);
+    font-family: "Roboto Flex", "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);
   }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 8px; }
+  a { color: var(--primary); }
+  .ms {
+    font-family: "Material Symbols Rounded"; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+    display: inline-block; white-space: nowrap; direction: ltr; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga";
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24; user-select: none; flex: none;
+  }
+  .ms.fill { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+  :focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 600px) { .wrap { padding: 0 24px; } }
 
-  /* Background glow + grid */
-  .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-  .bg::before {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(var(--stroke) 1px, transparent 1px),
-      linear-gradient(90deg, var(--stroke) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 75%);
-    opacity: .55;
+  /* ---------- Top app bar ---------- */
+  .appbar {
+    position: sticky; top: 0; z-index: 10; background: var(--surface);
+    padding-top: env(safe-area-inset-top); transition: background .2s;
   }
-  .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .45; }
-  .orb.a { width: 520px; height: 520px; background: var(--blue); top: -220px; left: -120px; animation: float 18s ease-in-out infinite alternate; }
-  .orb.b { width: 460px; height: 460px; background: var(--violet); top: -160px; right: -140px; animation: float 22s ease-in-out infinite alternate-reverse; }
-  .orb.c { width: 380px; height: 380px; background: var(--cyan); top: 380px; left: 40%; opacity: .18; animation: float 26s ease-in-out infinite alternate; }
-  @keyframes float { to { transform: translate(60px, 40px) scale(1.08); } }
-  @media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+  .appbar.scrolled { background: var(--surface-c); }
+  .appbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--on-surface); font-size: 20px; font-weight: 600; }
+  .brand-mark { width: 40px; height: 40px; border-radius: 14px; overflow: hidden; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; }
+  .brand small { color: var(--on-surface-variant); font-weight: 400; font-size: 14px; }
+  .btn-text {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 20px;
+    color: var(--primary); text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: .01em;
+  }
+  .btn-text:hover { background: color-mix(in srgb, var(--primary) 8%, transparent); }
 
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  /* ---------- Layout ---------- */
+  .layout { display: grid; gap: 24px; padding-top: 8px; padding-bottom: 48px; }
+  @media (min-width: 960px) { .layout { grid-template-columns: 5fr 6fr; gap: 32px; align-items: start; padding-top: 24px; } .info { position: sticky; top: 88px; } }
 
-  /* Nav */
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; letter-spacing: -0.01em; }
-  .logo {
-    width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
-    background: linear-gradient(135deg, var(--blue), var(--violet)); color: #fff;
-    box-shadow: 0 6px 24px -6px var(--blue);
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; overflow: hidden; border-radius: 28px; padding: 32px 24px 28px;
+    background: var(--primary-container); color: var(--on-primary-container);
   }
-  .brand small { color: var(--muted); font-weight: 500; }
-  .nav-link {
-    text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px;
-    border: 1px solid var(--stroke); background: var(--glass); backdrop-filter: blur(10px);
+  @media (min-width: 600px) { .hero { padding: 40px 36px 36px; } }
+  .hero .shape {
+    position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; background: var(--primary); opacity: .14;
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; animation: morph 14s ease-in-out infinite alternate;
   }
-  .nav-link:hover { border-color: var(--stroke-strong); }
+  .hero .shape.two { right: auto; left: -80px; top: auto; bottom: -90px; width: 200px; height: 200px; background: var(--tertiary); opacity: .16; animation-duration: 18s; }
+  @keyframes morph {
+    0% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; transform: rotate(0deg); }
+    100% { border-radius: 63% 37% 38% 62% / 55% 61% 39% 45%; transform: rotate(40deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero .shape { animation: none; } }
+  .status-chip {
+    position: relative; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px 0 8px; border-radius: 8px;
+    background: var(--surface); color: var(--on-surface); font-size: 14px; font-weight: 500;
+  }
+  .status-chip .ms { font-size: 18px; color: #1E8E3E; }
+  .hero h1 {
+    position: relative; margin: 20px 0 0; font-size: clamp(36px, 7vw, 57px); line-height: 1.08; letter-spacing: -0.02em; font-weight: 700;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero p { position: relative; margin: 14px 0 0; font-size: 18px; max-width: 40ch; opacity: .9; }
+  .help-chips { position: relative; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .help-chips > span {
+    display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 8px;
+    background: color-mix(in srgb, var(--surface) 70%, transparent); font-size: 14px; font-weight: 500;
+  }
+  .help-chips .ms { font-size: 18px; }
 
-  /* Layout */
-  .layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; padding: 48px 0 72px; align-items: start; }
-  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 36px; padding-top: 24px; } }
+  /* ---------- How it works ---------- */
+  .section-title { font-size: 22px; font-weight: 600; margin: 32px 4px 12px; }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .step {
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; padding: 16px; border-radius: 20px; background: var(--surface-c-low);
+  }
+  .step:first-child { border-radius: 24px 24px 8px 8px; }
+  .step:last-child { border-radius: 8px 8px 24px 24px; }
+  .step-icon { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; overflow: hidden; }
+  .step:nth-child(1) .step-icon { background: var(--success-container); color: var(--on-success-container); }
+  .step:nth-child(2) .step-icon { background: var(--secondary-container); color: var(--on-secondary-container); }
+  .step:nth-child(3) .step-icon { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+  .step h3 { margin: 2px 0 2px; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .step p { margin: 0; color: var(--on-surface-variant); font-size: 14px; }
+  .badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; }
+  .badge.free { background: var(--success-container); color: var(--on-success-container); }
+  .badge.pay { background: var(--tertiary-container); color: var(--on-tertiary-container); }
 
-  .pill {
-    display: inline-flex; align-items: center; gap: 8px; font-family: "Geist Mono", monospace; font-size: 13px;
-    padding: 6px 12px; border-radius: 999px; border: 1px solid var(--stroke); background: var(--glass); color: var(--muted);
-  }
-  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
+  /* ---------- Form card ---------- */
+  .card { background: var(--surface-c-low); border-radius: 28px; padding: 24px 16px; }
+  @media (min-width: 600px) { .card { padding: 32px; } }
+  .card-head h2 { margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+  .card-head p { margin: 6px 0 0; color: var(--on-surface-variant); }
+  .group { margin-top: 28px; }
+  .group-title { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--primary); margin: 0 0 14px; letter-spacing: .01em; }
+  .group-title .ms { font-size: 20px; }
+  .grid-2 { display: grid; gap: 16px; }
+  @media (min-width: 600px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+  .span-2 { grid-column: 1 / -1; }
 
-  h1 {
-    font-size: clamp(2.5rem, 6.2vw, 4.4rem); line-height: 1.02; letter-spacing: -0.045em; font-weight: 800;
-    margin: 22px 0 0;
+  /* Outlined text field with floating label */
+  .tf { position: relative; }
+  .tf input, .tf textarea {
+    width: 100%; font: inherit; font-size: 16px; /* 16px stops iOS zooming in */
+    color: var(--on-surface); background: transparent; caret-color: var(--primary);
+    border: 1px solid var(--outline); border-radius: 12px; padding: 16px; min-height: 56px;
+    -webkit-appearance: none; appearance: none; transition: border-color .15s, box-shadow .15s;
   }
-  h1 .grad {
-    background: linear-gradient(100deg, var(--blue) 0%, var(--violet) 50%, var(--cyan) 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+  .tf textarea { min-height: 140px; resize: vertical; padding-top: 18px; }
+  .tf label {
+    position: absolute; left: 12px; top: 16px; padding: 0 4px; color: var(--on-surface-variant); pointer-events: none;
+    background: var(--surface-c-low); transition: transform .15s ease, font-size .15s ease, color .15s ease, top .15s ease;
+    max-width: calc(100% - 24px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .lede { font-size: 1.15rem; color: var(--muted); max-width: 44ch; margin: 22px 0 0; }
+  .tf input:hover, .tf textarea:hover { border-color: var(--on-surface); }
+  .tf input:focus, .tf textarea:focus { outline: none; border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+  .tf input:focus + label, .tf textarea:focus + label,
+  .tf input:not(:placeholder-shown) + label, .tf textarea:not(:placeholder-shown) + label {
+    top: -9px; font-size: 12px; color: var(--primary);
+  }
+  .tf input:not(:focus):not(:placeholder-shown) + label, .tf textarea:not(:focus):not(:placeholder-shown) + label { color: var(--on-surface-variant); }
+  .tf input::placeholder, .tf textarea::placeholder { color: transparent; }
+  .tf input:focus::placeholder, .tf textarea:focus::placeholder { color: var(--on-surface-variant); opacity: .6; }
+  .support { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--on-surface-variant); padding: 4px 16px 0; min-height: 20px; }
+  .support .err { display: none; color: var(--error); }
+  .tf.invalid input, .tf.invalid textarea { border-color: var(--error); box-shadow: inset 0 0 0 1px var(--error); }
+  .tf.invalid label { color: var(--error) !important; }
+  .tf.invalid .support .hint { display: none; }
+  .tf.invalid .support .err { display: inline; }
 
-  .features { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
-  .features li {
-    display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px;
-    border: 1px solid var(--stroke); background: var(--glass); backdrop-filter: blur(10px);
+  /* Device chips */
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  legend { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; padding: 0; }
+  legend .ms { font-size: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { position: relative; }
+  .chip input, .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .chip > span {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px 0 12px; border-radius: 8px;
+    border: 1px solid var(--outline); color: var(--on-surface-variant); font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
   }
-  .features svg { flex: none; color: var(--cyan); margin-top: 2px; }
-  .features strong { display: block; font-weight: 600; }
-  .features span { color: var(--muted); font-size: 14px; }
+  .chip > span .ms { font-size: 18px; }
+  .chip > span:hover { background: color-mix(in srgb, var(--on-surface) 8%, transparent); }
+  .chip input:checked + span { background: var(--secondary-container); color: var(--on-secondary-container); border-color: transparent; }
+  .chip input:checked + span .ms { font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24; }
+  .chip input:focus-visible + span, .seg input:focus-visible + span { outline: 3px solid var(--primary); outline-offset: 2px; }
 
-  /* Form card */
-  .card {
-    position: relative; border-radius: 24px; padding: 28px;
-    background: var(--glass); border: 1px solid var(--stroke);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 30px 80px -30px rgba(0,0,0,.55);
-  }
-  .card::before {
-    content: ""; position: absolute; inset: -1px; border-radius: 25px; padding: 1px; pointer-events: none;
-    background: linear-gradient(140deg, color-mix(in srgb, var(--blue) 70%, transparent), transparent 40%, transparent 60%, color-mix(in srgb, var(--violet) 70%, transparent));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-  }
-  @media (max-width: 480px) { .card { padding: 20px 16px; border-radius: 20px; } }
-  .card h2 { margin: 0 0 4px; font-size: 1.35rem; letter-spacing: -0.02em; }
-  .card .sub { color: var(--muted); margin: 0 0 24px; font-size: 15px; }
-
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
-  .field { margin-bottom: 18px; }
-  label.lbl, .legend { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-  .opt { color: var(--muted); font-weight: 400; }
-  input[type=text], input[type=email], input[type=tel], textarea {
-    width: 100%; font: inherit; font-size: 15px; color: var(--text);
-    background: var(--glass-strong); border: 1px solid var(--stroke); border-radius: 12px; padding: 12px 14px;
-    transition: border-color .15s, box-shadow .15s;
-  }
-  input::placeholder, textarea::placeholder { color: var(--muted); opacity: .7; }
-  input:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 22%, transparent); }
-  textarea { min-height: 150px; resize: vertical; }
-
-  fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
-
-  /* Device tiles */
-  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  @media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
-  .tile input, .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .tile span {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
-    padding: 14px 6px; border-radius: 14px; border: 1px solid var(--stroke); background: var(--glass-strong);
-    font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; min-height: 84px;
-    transition: border-color .15s, color .15s, background .15s;
-  }
-  .tile svg { width: 22px; height: 22px; }
-  .tile span:hover { border-color: var(--stroke-strong); color: var(--text); }
-  .tile input:checked + span {
-    border-color: var(--blue); color: var(--text);
-    background: color-mix(in srgb, var(--blue) 14%, var(--glass-strong));
-    box-shadow: 0 0 0 1px var(--blue) inset;
-  }
-  .tile input:checked + span svg { color: var(--blue); }
-  .tile input:focus-visible + span, .seg input:focus-visible + span { outline: 2px solid var(--cyan); outline-offset: 2px; }
-
-  /* Segmented urgency */
-  .seg { display: grid; grid-template-columns: repeat(3, 1fr); padding: 4px; gap: 4px; border-radius: 14px; background: var(--glass-strong); border: 1px solid var(--stroke); }
+  /* Segmented button */
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--outline); border-radius: 24px; overflow: hidden; }
   .seg label { position: relative; }
-  .seg span { display: block; text-align: center; padding: 10px 6px; border-radius: 10px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; }
-  .seg input:checked + span { background: var(--text); color: var(--bg); font-weight: 600; }
-  .seg input[value="Urgent"]:checked + span { background: var(--danger); color: #fff; }
-
-  .count { text-align: right; color: var(--muted); font-size: 12px; margin-top: 6px; font-family: "Geist Mono", monospace; }
-  .error-text { color: var(--danger); font-size: 13px; margin-top: 6px; display: none; }
-  .field.invalid .error-text { display: block; }
-  .field.invalid input, .field.invalid textarea { border-color: var(--danger); }
-
-  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--muted); cursor: pointer; }
-  .consent input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--blue); flex: none; }
-  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-  .submit {
-    width: 100%; font: inherit; font-weight: 600; font-size: 16px; color: #fff; cursor: pointer;
-    border: 0; border-radius: 14px; padding: 15px 20px;
-    background: linear-gradient(100deg, var(--blue), var(--violet));
-    box-shadow: 0 12px 30px -10px var(--blue);
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    transition: transform .15s, box-shadow .15s;
+  .seg label + label > span { border-left: 1px solid var(--outline); }
+  .seg label > span {
+    display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px; padding: 0 8px;
+    font-size: 14px; font-weight: 500; color: var(--on-surface); cursor: pointer; text-align: center; transition: background .15s;
   }
-  .submit:hover { transform: translateY(-1px); box-shadow: 0 16px 36px -10px var(--blue); }
-  .submit:active { transform: translateY(0); }
-  .submit[disabled] { opacity: .7; cursor: progress; transform: none; }
-  .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; display: none; }
-  .submit[disabled] .spinner { display: inline-block; }
+  .seg label > span .ms { font-size: 18px; display: none; }
+  .seg input:checked + span { background: var(--secondary-container); color: var(--on-secondary-container); }
+  .seg input:checked + span .ms { display: inline-block; }
+  .seg input[value="Urgent"]:checked + span { background: var(--error-container); color: var(--on-error-container); }
+
+  /* Policy callout + checkbox */
+  .callout {
+    display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 16px; border-radius: 16px;
+    background: var(--tertiary-container); color: var(--on-tertiary-container); font-size: 14px;
+  }
+  .callout p { margin: 0; }
+  .callout strong { font-weight: 600; }
+  .check { display: grid; grid-template-columns: 48px 1fr; align-items: start; margin-top: 12px; cursor: pointer; font-size: 14px; color: var(--on-surface-variant); }
+  .check input { width: 18px; height: 18px; margin: 15px; accent-color: var(--primary); cursor: pointer; }
+  .check span { padding-top: 12px; }
+  .check.invalid span { color: var(--error); }
+
+  /* Buttons */
+  .btn-filled {
+    width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; margin-top: 20px;
+    border: 0; border-radius: 28px; background: var(--primary); color: var(--on-primary); cursor: pointer;
+    font: inherit; font-size: 16px; font-weight: 600; letter-spacing: .01em;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2), 0 1px 3px 1px rgba(0,0,0,.1); transition: box-shadow .15s, transform .1s;
+  }
+  .btn-filled:hover { box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 6px 2px rgba(0,0,0,.12); }
+  .btn-filled:active { transform: scale(.99); }
+  .btn-filled[disabled] { opacity: .7; cursor: progress; }
+  .progress { width: 20px; height: 20px; border-radius: 50%; border: 3px solid color-mix(in srgb, var(--on-primary) 35%, transparent); border-top-color: var(--on-primary); animation: spin .8s linear infinite; display: none; }
+  .btn-filled[disabled] .progress { display: inline-block; }
+  .btn-filled[disabled] .send-icon { display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .secure { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 13px; margin-top: 14px; }
+  .privacy { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: var(--on-surface-variant); margin: 12px 0 0; text-align: center; }
+  .privacy .ms { font-size: 16px; }
+
+  /* Snackbar */
+  .snackbar {
+    position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translate(-50%, calc(100% + 40px)); visibility: hidden;
+    width: min(560px, calc(100% - 32px)); background: var(--inverse-surface); color: var(--inverse-on-surface);
+    border-radius: 8px; padding: 14px 16px; font-size: 14px; z-index: 50; display: flex; gap: 12px; align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,.25); transition: transform .25s cubic-bezier(.2,0,0,1), visibility .25s;
+  }
+  .snackbar.show { transform: translate(-50%, 0); visibility: visible; }
+  .snackbar a { color: inherit; font-weight: 600; }
 
   /* Success */
-  .done { text-align: center; padding: 28px 8px; }
-  .done .check {
-    width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center;
-    background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok);
-    box-shadow: 0 0 0 8px color-mix(in srgb, var(--ok) 8%, transparent);
+  .done { text-align: center; padding: 24px 8px 8px; }
+  .done .tick { width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 28px; display: grid; place-items: center; background: var(--success-container); color: var(--on-success-container); }
+  .done .tick .ms { font-size: 40px; }
+  .done h2 { margin: 0 0 8px; font-size: 28px; font-weight: 600; }
+  .done p { margin: 0 auto 8px; color: var(--on-surface-variant); max-width: 42ch; }
+  .btn-tonal {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 24px; margin-top: 16px; border-radius: 24px;
+    background: var(--secondary-container); color: var(--on-secondary-container); text-decoration: none; font-weight: 600; font-size: 14px;
   }
-  .done h2 { font-size: 1.6rem; margin-bottom: 8px; }
-  .done p { color: var(--muted); margin: 0 0 20px; }
-  .ghost { display: inline-block; text-decoration: none; padding: 10px 18px; border-radius: 12px; border: 1px solid var(--stroke-strong); font-weight: 500; }
 
-  .form-error { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 12px; font-size: 14px;
-    border: 1px solid var(--danger); color: var(--text); background: color-mix(in srgb, var(--danger) 10%, transparent); }
-  .form-error.show { display: block; }
-  footer { border-top: 1px solid var(--stroke); padding: 24px 0 36px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  footer a { color: var(--text); }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  footer { padding: 24px 0 calc(32px + env(safe-area-inset-bottom)); color: var(--on-surface-variant); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--outline-variant); padding-top: 24px; }
 </style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
-
-  <div class="wrap">
-    <nav aria-label="Main">
+  <header class="appbar" id="appbar">
+    <div class="wrap">
       <a class="brand" href="./">
-        <span class="logo" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13.5 6-3 12"/></svg>
-        </span>
-        IT Solutions <small>by Jp</small>
+        <span class="brand-mark"><span class="ms">code</span></span>
+        <span>IT Solutions <small>by Jp</small></span>
       </a>
-      <a class="nav-link" href="mailto:vanzyljp21@gmail.com">Email me</a>
-    </nav>
-  </div>
+      <a class="btn-text" href="mailto:vanzyljp21@gmail.com"><span class="ms">mail</span><span>Email</span></a>
+    </div>
+  </header>
 
   <main class="wrap layout">
-    <section aria-labelledby="hero-title">
-      <span class="pill"><span class="dot" aria-hidden="true"></span>Taking new requests</span>
-      <h1 id="hero-title">Tech problems?<br><span class="grad">Let's fix them.</span></h1>
-      <p class="lede">Tell me what's going wrong in your own words — no tech jargon needed. I read every request myself and reply if I can help.</p>
+    <div class="info">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="shape" aria-hidden="true"></div>
+        <div class="shape two" aria-hidden="true"></div>
+        <span class="status-chip"><span class="ms fill">circle</span>Taking new requests</span>
+        <h1 id="hero-title">Tech problems? Let's fix them.</h1>
+        <p>Tell me what's going wrong in your own words — no jargon needed. I read every request myself.</p>
+        <div class="help-chips" aria-label="Things I can help with">
+          <span><span class="ms">computer</span>PCs &amp; laptops</span>
+          <span><span class="ms">wifi</span>Wi-Fi</span>
+          <span><span class="ms">print</span>Printers</span>
+          <span><span class="ms">mail</span>Email</span>
+          <span><span class="ms">smartphone</span>Phones</span>
+        </div>
+      </section>
 
-      <ul class="features">
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          <div><strong>PCs &amp; laptops</strong><span>Slow, crashing, won't start</span></div>
+      <h2 class="section-title">How it works</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-icon"><span class="ms">support_agent</span></span>
+          <div>
+            <h3>Online help <span class="badge free">Free</span></h3>
+            <p>Quick queries are answered free by email, with steps you can follow yourself.</p>
+          </div>
         </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg>
-          <div><strong>Wi-Fi &amp; network</strong><span>Dropping, slow, setup</span></div>
+        <li class="step">
+          <span class="step-icon"><span class="ms">search</span></span>
+          <div>
+            <h3>Quick assessment</h3>
+            <p>If it needs more than online help, bring your device in so I can assess what's wrong.</p>
+          </div>
         </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          <div><strong>Email &amp; accounts</strong><span>Passwords, setup, sync</span></div>
+        <li class="step">
+          <span class="step-icon"><span class="ms">request_quote</span></span>
+          <div>
+            <h3>Quote, then repair <span class="badge pay">Paid</span></h3>
+            <p>If work is needed, you'll get a quote. Payment is made before any work starts.</p>
+          </div>
         </li>
-        <li>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
-          <div><strong>Printers</strong><span>Offline, drivers, scanning</span></div>
-        </li>
-      </ul>
-    </section>
+      </ol>
+    </div>
 
     <section class="card" id="formArea" aria-labelledby="form-title">
-      <h2 id="form-title">Request help</h2>
-      <p class="sub">Takes about two minutes.</p>
+      <div class="card-head">
+        <h2 id="form-title">Request help</h2>
+        <p>Takes about two minutes.</p>
+      </div>
 
-      <form id="helpForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <form id="helpForm" novalidate>
         <input type="hidden" name="access_key" value="eac45517-d71f-429d-81f4-240635b910ce">
-        <input type="hidden" name="subject" id="subjectField" value="New IT help request">
+        <input type="hidden" name="subject" id="subjectField" value="IT help request">
         <input type="hidden" name="from_name" value="IT Solutions website">
 
-        <div class="row">
-          <div class="field" id="f-name">
-            <label class="lbl" for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Your name" required>
-            <div class="error-text">Enter your name.</div>
-          </div>
-          <div class="field" id="f-email">
-            <label class="lbl" for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@example.com" required>
-            <div class="error-text">Enter an email I can reply to.</div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label class="lbl" for="phone">Phone <span class="opt">(optional)</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="082 123 4567">
-          </div>
-          <div class="field">
-            <label class="lbl" for="area">Area <span class="opt">(optional)</span></label>
-            <input id="area" name="area" type="text" maxlength="100" placeholder="e.g. Queenswood">
+        <div class="group">
+          <p class="group-title"><span class="ms">person</span>Your details</p>
+          <div class="grid-2">
+            <div class="tf span-2" id="f-name">
+              <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="e.g. Sarah Botha" required>
+              <label for="name">Full name</label>
+              <div class="support"><span class="hint">&nbsp;</span><span class="err">Enter your name</span></div>
+            </div>
+            <div class="tf" id="f-email">
+              <input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="200" placeholder="you@example.com" required>
+              <label for="email">Email</label>
+              <div class="support"><span class="hint">I'll reply here</span><span class="err">Enter a valid email</span></div>
+            </div>
+            <div class="tf" id="f-phone">
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="082 123 4567" required>
+              <label for="phone">Phone number</label>
+              <div class="support"><span class="hint">For urgent jobs</span><span class="err">Enter a phone number</span></div>
+            </div>
           </div>
         </div>
 
-        <fieldset>
-          <legend class="legend">What's giving trouble?</legend>
-          <div class="tiles">
-            <label class="tile"><input type="radio" name="device" value="PC / Laptop" checked><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>PC / Laptop</span></label>
-            <label class="tile"><input type="radio" name="device" value="Phone / Tablet"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>Phone / Tablet</span></label>
-            <label class="tile"><input type="radio" name="device" value="Wi-Fi / Internet"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg>Wi-Fi / Internet</span></label>
-            <label class="tile"><input type="radio" name="device" value="Printer / Scanner"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>Printer</span></label>
-            <label class="tile"><input type="radio" name="device" value="Email / Accounts"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</span></label>
-            <label class="tile"><input type="radio" name="device" value="Software / Apps"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Software</span></label>
-            <label class="tile"><input type="radio" name="device" value="Virus / Security"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/></svg>Security</span></label>
-            <label class="tile"><input type="radio" name="device" value="Something else"><span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7v.5"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>Other</span></label>
+        <div class="group">
+          <p class="group-title"><span class="ms">home_pin</span>Your address</p>
+          <div class="grid-2">
+            <div class="tf span-2" id="f-street">
+              <input id="street" name="street_address" type="text" autocomplete="address-line1" maxlength="150" placeholder="e.g. 12 Jacaranda Street" required>
+              <label for="street">Street address</label>
+              <div class="support"><span class="hint">House or unit number and street</span><span class="err">Enter your street address</span></div>
+            </div>
+            <div class="tf" id="f-suburb">
+              <input id="suburb" name="suburb" type="text" autocomplete="address-line2" maxlength="100" placeholder="e.g. Queenswood" required>
+              <label for="suburb">Suburb</label>
+              <div class="support"><span class="hint">&nbsp;</span><span class="err">Enter your suburb</span></div>
+            </div>
+            <div class="tf" id="f-city">
+              <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="100" placeholder="e.g. Pretoria" required>
+              <label for="city">City / town</label>
+              <div class="support"><span class="hint">&nbsp;</span><span class="err">Enter your city or town</span></div>
+            </div>
+            <div class="tf" id="f-postal">
+              <input id="postal" name="postal_code" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="e.g. 0186">
+              <label for="postal">Postal code (optional)</label>
+              <div class="support"><span class="hint">&nbsp;</span><span class="err"></span></div>
+            </div>
           </div>
-        </fieldset>
-
-        <fieldset>
-          <legend class="legend">How urgent is it?</legend>
-          <div class="seg">
-            <label><input type="radio" name="urgency" value="Not urgent" checked><span>Not urgent</span></label>
-            <label><input type="radio" name="urgency" value="This week"><span>This week</span></label>
-            <label><input type="radio" name="urgency" value="Urgent"><span>Urgent</span></label>
-          </div>
-        </fieldset>
-
-        <div class="field" id="f-problem">
-          <label class="lbl" for="problem">Describe the problem</label>
-          <textarea id="problem" name="problem" maxlength="4000" required
-            placeholder="What happens, when it started, any error messages, and what you've already tried…"></textarea>
-          <div class="count"><span id="count">0</span>/4000</div>
-          <div class="error-text">Tell me a bit more (at least 20 characters).</div>
         </div>
 
-        <div class="trap" aria-hidden="true">
+        <div class="group">
+          <fieldset>
+            <legend><span class="ms">devices</span>What's giving trouble?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="device" value="PC / Laptop" checked><span><span class="ms">computer</span>PC / Laptop</span></label>
+              <label class="chip"><input type="radio" name="device" value="Phone / Tablet"><span><span class="ms">smartphone</span>Phone / Tablet</span></label>
+              <label class="chip"><input type="radio" name="device" value="Wi-Fi / Internet"><span><span class="ms">wifi</span>Wi-Fi / Internet</span></label>
+              <label class="chip"><input type="radio" name="device" value="Printer / Scanner"><span><span class="ms">print</span>Printer</span></label>
+              <label class="chip"><input type="radio" name="device" value="Email / Accounts"><span><span class="ms">mail</span>Email / Accounts</span></label>
+              <label class="chip"><input type="radio" name="device" value="Software / Apps"><span><span class="ms">apps</span>Software</span></label>
+              <label class="chip"><input type="radio" name="device" value="Virus / Security"><span><span class="ms">shield</span>Security</span></label>
+              <label class="chip"><input type="radio" name="device" value="Something else"><span><span class="ms">help</span>Other</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="group">
+          <fieldset>
+            <legend><span class="ms">schedule</span>How urgent is it?</legend>
+            <div class="seg">
+              <label><input type="radio" name="urgency" value="Not urgent" checked><span><span class="ms">check</span>Not urgent</span></label>
+              <label><input type="radio" name="urgency" value="This week"><span><span class="ms">check</span>This week</span></label>
+              <label><input type="radio" name="urgency" value="Urgent"><span><span class="ms">check</span>Urgent</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="group">
+          <p class="group-title"><span class="ms">description</span>The problem</p>
+          <div class="tf" id="f-problem">
+            <textarea id="problem" name="problem" maxlength="4000" placeholder="What happens, when it started, any error messages, and what you've already tried" required></textarea>
+            <label for="problem">Describe the problem</label>
+            <div class="support"><span class="hint">More detail helps me help you faster</span><span class="err">Tell me a bit more (at least 20 characters)</span><span id="count">0 / 4000</span></div>
+          </div>
+        </div>
+
+        <div class="hp" aria-hidden="true">
           <label for="hp">Leave empty</label>
           <input id="hp" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off">
         </div>
 
-        <div class="field" id="f-consent">
-          <label class="consent">
-            <input type="checkbox" id="consent" name="consent" value="Agreed" required>
-            I agree that Jp may use these details only to respond to this request.
+        <div class="group">
+          <div class="callout">
+            <span class="ms">info</span>
+            <p><strong>Good to know:</strong> quick online queries are free. If you need more help, you'll need to bring your device in for a quick assessment. If work needs to be done, I'll give you a quote, and <strong>payment must be made before any work is started</strong>.</p>
+          </div>
+          <label class="check" id="f-consent">
+            <input type="checkbox" id="consent" name="terms" value="Accepted: free online help; assessment in person; quote and payment before any work">
+            <span>I understand how it works, and I agree that Jp may use my details only to respond to this request.</span>
           </label>
-          <div class="error-text">Please tick this so I'm allowed to contact you.</div>
         </div>
 
-        <button type="submit" class="submit" id="submitBtn">
-          <span class="spinner" aria-hidden="true"></span>
+        <button type="submit" class="btn-filled" id="submitBtn">
+          <span class="progress" aria-hidden="true"></span>
+          <span class="ms send-icon">send</span>
           <span id="btnText">Send request</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
         </button>
-        <p class="secure">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          Your details are only used to reply to you.
-        </p>
-        <div class="form-error" id="formError" role="alert"></div>
+        <p class="privacy"><span class="ms">lock</span>Your details are only used to reply to you.</p>
       </form>
     </section>
   </main>
 
-  <div class="wrap">
-    <footer>
+  <footer>
+    <div class="wrap">
       <span>© <span id="year">2026</span> IT Solutions by Jp</span>
       <a href="mailto:vanzyljp21@gmail.com">vanzyljp21@gmail.com</a>
-    </footer>
-  </div>
+    </div>
+  </footer>
+
+  <div class="snackbar" id="snackbar" role="alert" aria-live="assertive"></div>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  // App bar tint on scroll (Material behaviour)
+  const appbar = document.getElementById("appbar");
+  const onScroll = () => appbar.classList.toggle("scrolled", window.scrollY > 4);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
   const form = document.getElementById("helpForm");
   const btn = document.getElementById("submitBtn");
   const btnText = document.getElementById("btnText");
-  const errBox = document.getElementById("formError");
   const problem = document.getElementById("problem");
-  problem.addEventListener("input", () => { document.getElementById("count").textContent = problem.value.length; });
+  const snackbar = document.getElementById("snackbar");
+  problem.addEventListener("input", () => { document.getElementById("count").textContent = problem.value.length + " / 4000"; });
 
-  function setInvalid(id, bad) { document.getElementById(id).classList.toggle("invalid", bad); return !bad; }
+  // Clear an error as soon as the person fixes the field
+  form.addEventListener("input", (e) => { const box = e.target.closest(".tf, .check"); if (box) box.classList.remove("invalid"); });
+  form.addEventListener("change", (e) => { const box = e.target.closest(".check"); if (box) box.classList.remove("invalid"); });
+
+  let snackTimer;
+  function snack(html) {
+    snackbar.innerHTML = html;
+    snackbar.classList.add("show");
+    clearTimeout(snackTimer);
+    snackTimer = setTimeout(() => snackbar.classList.remove("show"), 8000);
+  }
   function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+  function mark(id, bad) { document.getElementById(id).classList.toggle("invalid", bad); return !bad; }
 
-  function showSuccess() {
+  function validate() {
+    const v = (id) => document.getElementById(id).value.trim();
+    let ok = true;
+    ok = mark("f-name", v("name").length < 2) && ok;
+    ok = mark("f-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) && ok;
+    ok = mark("f-phone", v("phone").replace(/\D/g, "").length < 9) && ok;
+    ok = mark("f-street", v("street").length < 4) && ok;
+    ok = mark("f-suburb", v("suburb").length < 2) && ok;
+    ok = mark("f-city", v("city").length < 2) && ok;
+    ok = mark("f-problem", v("problem").length < 20) && ok;
+    ok = mark("f-consent", !document.getElementById("consent").checked) && ok;
+    if (!ok) {
+      const first = form.querySelector(".invalid input, .invalid textarea");
+      if (first) { first.focus({ preventScroll: true }); first.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      snack("Please fix the highlighted fields.");
+    }
+    return ok;
+  }
+
+  function showSuccess(firstName) {
     document.getElementById("formArea").innerHTML =
       '<div class="done" role="status">' +
-        '<div class="check"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>' +
+        '<div class="tick"><span class="ms fill">check_circle</span></div>' +
         '<h2>Request sent</h2>' +
-        '<p>Thanks — I\'ll read it and get back to you if I can help.</p>' +
-        '<a class="ghost" href="' + location.href.split("?")[0].split("#")[0] + '">Send another request</a>' +
+        '<p>Thanks, ' + esc(firstName) + '. I\'ll read it and reply by email. If it\'s urgent, I may phone you.</p>' +
+        '<a class="btn-tonal" href="' + location.href.split("?")[0].split("#")[0] + '"><span class="ms">add</span>Send another request</a>' +
       '</div>';
+    document.getElementById("formArea").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    errBox.classList.remove("show");
+    snackbar.classList.remove("show");
+    if (!validate()) return;
 
-    let ok = true;
-    ok = setInvalid("f-name", form.name.value.trim().length < 2) && ok;
-    ok = setInvalid("f-email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim())) && ok;
-    ok = setInvalid("f-problem", problem.value.trim().length < 20) && ok;
-    ok = setInvalid("f-consent", !form.consent.checked) && ok;
-    if (!ok) {
-      const first = form.querySelector(".invalid input, .invalid textarea");
-      if (first) first.focus();
-      return;
-    }
-
-    // Subject line in your inbox, e.g. "🔴 IT help: Wi-Fi / Internet — Piet"
-    const urgent = form.urgency.value === "Urgent" ? "🔴 " : "";
+    const name = form.name.value.trim();
+    const urgent = form.urgency.value === "Urgent";
     document.getElementById("subjectField").value =
-      urgent + "IT help: " + form.device.value + " — " + form.name.value.trim();
+      (urgent ? "[URGENT] " : "") + "IT help: " + form.device.value + " — " + name + " (" + form.city.value.trim() + ")";
 
     btn.disabled = true;
     btnText.textContent = "Sending…";
@@ -419,11 +541,9 @@
       });
       const out = await res.json();
       if (!out.success) throw new Error(out.message || "The form service rejected the request");
-      showSuccess();
+      showSuccess(name.split(" ")[0]);
     } catch (err) {
-      errBox.innerHTML = "Your request didn't go through (" + esc(err.message) + "). Try again in a minute, or email me at " +
-        '<a href="mailto:vanzyljp21@gmail.com">vanzyljp21@gmail.com</a>.';
-      errBox.classList.add("show");
+      snack("Couldn't send (" + esc(err.message) + "). Try again, or <a href=\"mailto:vanzyljp21@gmail.com\">email me</a>.");
       btn.disabled = false;
       btnText.textContent = "Send request";
     }
